@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.service.wallpaper.WallpaperService
+import android.view.MotionEvent
 import android.view.SurfaceHolder
 import androidx.annotation.RequiresApi
 import kotlin.math.abs
@@ -102,6 +103,11 @@ class AnalogWallpaperService : WallpaperService() {
                 Color.valueOf(mBackColor),
                 Color.valueOf(mBackColor)
             )
+        }
+
+        override fun onTouchEvent(event: MotionEvent?) {
+            super.onTouchEvent(event)
+
         }
 
         //Sets Visibility and Callback
@@ -369,7 +375,7 @@ class AnalogWallpaperService : WallpaperService() {
         @SuppressLint("SimpleDateFormat")
         fun getCurrentDate(): String {
             // 03.Dec
-            val dateFormat = SimpleDateFormat("dd.MMM")
+            val dateFormat = SimpleDateFormat("dd MMM")
             val today: Date = Calendar.getInstance().time
             return dateFormat.format(today)
         }
